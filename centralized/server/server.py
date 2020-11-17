@@ -28,9 +28,10 @@ def validate_heartbeats():
     while True:
         time.sleep(2)
         for key in hbs:
-            if (datetime.now() - hbs[key]).total_seconds() > 10 and hbs[key] != 0:
-                hbs[key] = 0
-                print('Failed connection detected for: ' + key)
+            if hbs[key] != None:
+                if (datetime.now() - hbs[key]).total_seconds() > 10:
+                    hbs[key] = None
+                    print('Failed connection detected for: ' + key)
 
 validation_thread = threading.Thread(target=validate_heartbeats)
 validation_thread.start()
