@@ -11,7 +11,7 @@ class NetworkNode:
     
     def incrementHb(self):
         self.heartBeat += 1
-        self.updateTime = datetIme.now()
+        self.updateTime = datetime.now()
 
     def markAsFailed(self):
         self.failed = True
