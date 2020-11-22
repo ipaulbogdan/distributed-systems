@@ -30,9 +30,9 @@ def validateNodes():
     time.sleep(5)
     while True:
         for node in nodes:
-            if node.failed == False and (datetime.now() - hbs[key]).total_seconds() > 10:
+            if node.failed == False and (datetime.now() - node.updateTime).total_seconds() > 10:
                 node.failed = True
-                print('Node with ip:' + node.ip + 'has failed')
+                print('Node with ip:' + node.ip + ' has failed')
 
 
 threading.Thread(target = pingAll).run()
