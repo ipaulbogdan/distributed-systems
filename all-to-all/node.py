@@ -21,7 +21,8 @@ populate_node_list()
 def pingAll():
     while True:
         for node in nodes:
-            if os.system('ping -c 1 ' + node.ip) == 0:
+            if os.system('ping -c 1 ' + node.ip + ' >/dev/null') == 0:
+                print('Incrementing ' + node.ip)
                 node.incrementHb()
         time.sleep(2)
 
