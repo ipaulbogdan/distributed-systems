@@ -10,7 +10,7 @@ nodes = []
 refreshed_nodes = []
 
 host = socket.gethostbyname(socket.gethostname())
-# ips.remove(host)
+ips.remove(host)
 
 def populate_node_list():
     for ip in ips:
