@@ -15,17 +15,16 @@ ips.remove(host)
 def populate_node_list():
     for ip in ips:
         nodes.append(NetworkNode(ip))
-    refreshed_nodes = nodes
     
 populate_node_list()
+refreshed_nodes = nodes
 
 def validateNodes():
-    while True:
-        nodes = refreshed_nodes
-        for node in nodes:
-            if node.failed == True:
-                print('Node with ip:' + node.ip + ' has failed')
-                refreshed_nodes.remove(node)
+    nodes = refreshed_nodes
+    for node in nodes:
+        if node.failed == True:
+            print('Node with ip:' + node.ip + ' has failed')
+            refreshed_nodes.remove(node)    
 
 def pingAll():
     while True:
@@ -35,8 +34,8 @@ def pingAll():
                 node.incrementHb()
             else:
                 node.markAsFailed()
-            validateNodes()
-        time.sleep(2)
+        validateNodes()
+        time.sleep(2.5)
 
 pingAll()
             
